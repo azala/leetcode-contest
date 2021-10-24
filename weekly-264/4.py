@@ -7,7 +7,7 @@ class Solution:
             out_edges[x-1].add(y-1)
         min_time_to_start = [0 for _ in range(n)]
         max_finish_time = 0
-        startable_courses = collections.deque()
+        startable_courses = []
         
         # start every no-prereq course at the same time
         for index, count in enumerate(in_edges):
@@ -16,7 +16,7 @@ class Solution:
 
         while startable_courses:
             # start any course with no prereqs left
-            course = startable_courses.popleft()
+            course = startable_courses.pop()
             time_finished = min_time_to_start[course] + time[course]
             for next_course in out_edges[course]:
                 min_time_to_start[next_course] = max(min_time_to_start[next_course], time_finished)
