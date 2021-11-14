@@ -32,7 +32,7 @@ class DSU:
 class Solution:
     def friendRequests(self, n: int, restrictions: List[List[int]], requests: List[List[int]]) -> List[bool]:
         ret = []
-        dsu = DSU(n) # use disjoin subset union to keep track of indirect friendships
+        dsu = DSU(n) # use disjoint subset union to keep track of indirect friendships
         for a, b in requests:
             da, db = dsu.find(a), dsu.find(b)
             if da == db:
